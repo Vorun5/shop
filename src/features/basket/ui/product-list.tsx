@@ -1,6 +1,6 @@
 import { Button } from '@/shared/ui/button'
 import { RootState } from '@/store'
-import { makePurchase } from '@/store/basket'
+import { makePurchase, removeProduct } from '@/store/basket'
 import { useDispatch, useSelector } from 'react-redux'
 import { ProductItem } from './product-item'
 import { useMemo } from 'react'
@@ -32,7 +32,26 @@ export function ProductList() {
         <>
           <ol>
             {basket.map((product) => (
-              <ProductItem key={product.id} product={product} />
+              <ProductItem
+                key={product.id}
+                product={product}
+                actions={
+                  <div className="mt-4 flex justify-end gap-2">
+                    <Button
+                      onClick={() => dispatch(removeProduct({ id: product.id, quantity: 1 }))}
+                    >
+                      -
+                    </Button>
+                    <Button
+                      onClick={() =>
+                        dispatch(removeProduct({ id: product.id, quantity: product.quantity }))
+                      }
+                    >
+                      Удалить всe
+                    </Button>
+                  </div>
+                }
+              />
             ))}
           </ol>
           <Button

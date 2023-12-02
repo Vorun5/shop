@@ -10,7 +10,7 @@ export function HomePage() {
   const dispatch = useDispatch()
 
   return (
-    <div className="bg-base-100 h-[20000px]">
+    <div className="max-w-3xl mx-auto py-4 px-2">
       <h2 className="text-3xl">Корзина ({basket.length})</h2>
       {basket.map((p) => (
         <div key={p.id}>

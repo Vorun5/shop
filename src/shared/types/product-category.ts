@@ -5,4 +5,5 @@ export const allProductsCategory: ProductCategory[] = [
   'Clothing',
   'Home and Kitchen',
   'Toys',
+  'Electronics',
 ]

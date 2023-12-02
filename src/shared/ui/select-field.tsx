@@ -1,10 +1,16 @@
-import { ReactNode, SelectHTMLAttributes, useId } from 'react';
+import clsx from 'clsx'
+import { ReactNode, SelectHTMLAttributes, useId } from 'react'
 
 export function SelectField({
   label,
+  error,
   children,
   ...props
-}: { label?: string; children: ReactNode } & SelectHTMLAttributes<HTMLSelectElement>) {
+}: {
+  label?: string
+  error?: string | null
+  children: ReactNode
+} & SelectHTMLAttributes<HTMLSelectElement>) {
   const id = useId()
 
   return (
@@ -16,11 +22,15 @@ export function SelectField({
       )}
       <select
         id={id}
-        className="block h-12 text-lg w-full py-2 px-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className={clsx(
+          'block h-12 text-lg w-full py-2 px-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500',
+          error && 'border-red-300 focus:ring-red-500'
+        )}
         {...props}
       >
         {children}
       </select>
+      {error && <span className="block mt-1 text-red-500">{error}</span>}
     </div>
   )
 }

@@ -1,3 +1,4 @@
+import { AddProduct } from '@/features/add-product'
 import { Basket } from '@/features/basket/ui/basket'
 
 export function Header() {
@@ -7,12 +8,16 @@ export function Header() {
         <div className="flex gap-3">
           <img
             className="w-10"
+            draggable={false}
             src="https://cdn.betterttv.net/emote/64246f35a7ede3d7bda70e06/3x.webp"
             alt="EZPoro"
           />
           <h1 className="text-3xl text-blue-500 font-medium">EasyShop</h1>
         </div>
-        <Basket />
+        <div className='flex gap-3'>
+          <AddProduct />
+          <Basket />
+        </div>
       </div>
     </header>
   )

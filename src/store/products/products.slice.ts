@@ -22,7 +22,13 @@ export const productsSlice = createSlice({
   initialState,
   reducers: {
     addProduct: (state, action: PayloadAction<Omit<Product, 'id'>>) => {
-      if (!state.products.some((product) => equalString(product.name, action.payload.name))) {
+      if (state.products.some((product) => equalString(product.name, action.payload.name))) {
+        state.products.push({
+          id: Date.now().toString(),
+          ...action.payload,
+          name: action.payload.name + ' copy',
+        })
+      } else {
         state.products.push({ id: Date.now().toString(), ...action.payload })
       }
     },

@@ -22,7 +22,7 @@ export function AddProductForm() {
 
   const onSave = () => {
     let hasError = false
-    
+
     if (name.trim().length === 0) {
       setNameError('Название товара не должно быть пустым')
       hasError = true
@@ -43,6 +43,11 @@ export function AddProductForm() {
 
     if (!hasError) {
       dispatch(addProduct({ category, name, quantity, unitPrice, img: img ? img : undefined }))
+      setName('')
+      setCategory('Clothing')
+      setUnitPrice(5)
+      setQuantity(1)
+      setPhotoUrl('')
     }
   }
 

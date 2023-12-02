@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.popup-restrictions {
+  max-width: calc(100dvw - 2rem);
+  max-height: calc(100dvh - 2rem);
+}
+
+.title {
+  @apply font-medium text-2xl;
+}

@@ -12,7 +12,7 @@ export type Product = {
 export const mockProducts: Product[] = [
   {
     id: '1',
-    name: 'Смартфон',
+    name: 'Смартфон aksdk ak asdk kaskd kakskdk kaskd kaks kkasdk aksd',
     category: 'Electronics',
     quantity: 20,
     unitPrice: 999,

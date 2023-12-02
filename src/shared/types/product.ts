@@ -12,7 +12,7 @@ export type Product = {
 export const mockProducts: Product[] = [
   {
     id: '1',
-    name: 'Смартфон aksdk ak asdk kaskd kakskdk kaskd kaks kkasdk aksd',
+    name: 'Смартфон Super 12 Pro Max 2048GB 6.7 дюймов',
     category: 'Electronics',
     quantity: 20,
     unitPrice: 999,

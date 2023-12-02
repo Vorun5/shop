@@ -1,8 +1,8 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import { Product, mockProducts } from '@/shared/types/product'
 import { ProductFilters } from '@/shared/types/product-filters'
-import { filterProducts } from './utils'
 import { equalString } from '@/shared/lib/equal-string'
+import { sortProducts } from '@/shared/lib/sort-products'
 
 export type ProductState = {
   products: Product[]
@@ -10,10 +10,7 @@ export type ProductState = {
 }
 
 const initialState: ProductState = {
-  products: filterProducts(mockProducts, {
-    query: '',
-    producatCategory: null,
-  }),
+  products: sortProducts(mockProducts),
   filters: {
     query: '',
     producatCategory: null,
@@ -29,8 +26,7 @@ export const productsSlice = createSlice({
         state.products.push({ id: Date.now().toString(), ...action.payload })
       }
     },
-    filterProducts: (state, action: PayloadAction<ProductFilters>) => {
-      state.products = filterProducts(state.products, action.payload)
+    changeFilters: (state, action: PayloadAction<ProductFilters>) => {
       state.filters = action.payload
     },
     removeProducts: (state, action: PayloadAction<Pick<Product, 'id' | 'quantity'>[]>) => {
@@ -49,8 +45,7 @@ export const productsSlice = createSlice({
           newProducts.push(product)
         }
       })
-      console.log(newProducts)
-      state.products = filterProducts(newProducts, state.filters)
+      state.products = newProducts
     },
   },
 })

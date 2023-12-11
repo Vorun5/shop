@@ -1,6 +1,7 @@
 import { AddProduct } from '@/features/add-product'
 import { Basket } from '@/features/basket/ui/basket'
 
+// test
 export function Header() {
   return (
     <header className="fixed top-0 w-full bg-slate-300 p-2">
